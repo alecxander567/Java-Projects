@@ -60,8 +60,7 @@ public class Main {
 	
 				System.out.println("\nFiles save successfully!");
 				System.out.println("Remaining storage : " + fileStorage);
-				break;
-				
+				break;			
 			case 2:
 				for (int i = 0; i < musics.length; i++) {
 					s.nextLine();
