@@ -38,6 +38,44 @@ public class Main {
 		return files;
 	}
 	
+	
+	public static String[] deleteFiles(String[] files) {
+		boolean found = false;
+		int index = -1; // Keep track of the loop
+		
+		String fileToDelete;
+		
+		s.nextLine();
+		System.out.print("\nEnter the file name to delete : ");
+		fileToDelete = s.nextLine();
+		
+		// Find the file to delete
+		for (int i = 0; i < files.length; i++) {
+			if (fileToDelete.equalsIgnoreCase(files[i])) {
+				found = true;
+				index = i;
+			}
+		}
+		 
+		// If not found
+		if (!found) {
+			System.out.println("\nFile not found!");
+			return files;
+		}
+		
+		// Create a new array to store the updated elements
+		String[] updatedFiles = new String[files.length - 1];
+		
+		for (int i = 0, j = 0; i < files.length; i++) {
+			if (i != index) {
+				updatedFiles[j++] = files[i]; // Copies all the elements except for the specified index
+			}
+		}
+		
+		System.out.println("\nFile deleted successfully!");
+		return updatedFiles;
+	}
+	
 
 	public static void main(String[] args) {
 		int option;
@@ -74,6 +112,7 @@ public class Main {
 			System.out.println("[5] View musics");
 			System.out.println("[6] Show videos");
 			System.out.println("[7] Edit file name");
+			System.out.println("[8] Delete a file");
 			System.out.println("[0] Exit");
 			
 			System.out.print("\nEnter your choice : ");
@@ -147,6 +186,9 @@ public class Main {
 				break;
 			case 7:
 				files = updatedFileName(files);
+				break;
+			case 8:
+				files = deleteFiles(files);
 				break;
 			case 0:
 				System.out.println("\nProgram terminated!...");
