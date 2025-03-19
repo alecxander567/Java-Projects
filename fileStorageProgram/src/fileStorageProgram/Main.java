@@ -1,10 +1,45 @@
 package fileStorageProgram;
 import java.util.Scanner;
 public class Main {
+	
+	static Scanner s = new Scanner(System.in);
+	
+	public static String[] updatedFileName(String[] files) {
+		boolean itemFound = false;
+		int index = -1; // Set index to keep track of the loop
+		
+		String fileName;
+		
+		s.nextLine();
+		System.out.print("\nEnter the file name to edit : ");
+		fileName = s.nextLine();
+		
+		// Loop to search for the File name
+		for (int i = 0; i < files.length; i++) {
+			if (fileName.equalsIgnoreCase(files[i])) {
+				itemFound = true;
+				index = i;
+			}			
+		}
+		
+		// Update the file name
+		System.out.print("Enter the new file name : ");
+		String newFileName = s.nextLine();
+		
+		files[index] = newFileName;
+		
+		// If no such file
+		if (!itemFound) {
+			System.out.println("\nFile not found!");
+			return files;
+		}	
+		
+		System.out.println("\nFile name edited successfully!");
+		return files;
+	}
+	
 
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		
 		int option;
 		
 		// Your storage
@@ -38,6 +73,7 @@ public class Main {
 			System.out.println("[4] View files");
 			System.out.println("[5] View musics");
 			System.out.println("[6] Show videos");
+			System.out.println("[7] Edit file name");
 			System.out.println("[0] Exit");
 			
 			System.out.print("\nEnter your choice : ");
@@ -60,7 +96,7 @@ public class Main {
 	
 				System.out.println("\nFiles save successfully!");
 				System.out.println("Remaining storage : " + fileStorage);
-				break;			
+				break;	
 			case 2:
 				for (int i = 0; i < musics.length; i++) {
 					s.nextLine();
@@ -109,10 +145,12 @@ public class Main {
 					System.out.println("\nName of video : " + videos[i]);
 				}
 				break;
+			case 7:
+				files = updatedFileName(files);
+				break;
 			case 0:
 				System.out.println("\nProgram terminated!...");
-				break;
-			
+				break;		
 			default:
 				System.out.println("\nInvalid choice!");
 				continue;
