@@ -76,14 +76,41 @@ public class Main {
 		return updatedFiles;
 	}
 	
+	
+	public static String[] addedFiles(String[] files) {
+		int addFiles;
+		
+		System.out.print("\nHow many files to add : ");
+		addFiles = s.nextInt();
+		
+		// Make a new array
+		String[] newFiles = new String[files.length + addFiles];
+		
+		// Copy all the elements from the original array
+		for (int i = 0; i < files.length; i++) {
+			newFiles[i] = files[i];
+		}
+		
+		// Add the new elements
+		for (int i = files.length; i < newFiles.length; i++) {
+			s.nextLine();
+			System.out.print("Enter the files name/s:");
+			String newFileName = s.nextLine();
+			
+			// Store it in the new array
+			newFiles[i] = newFileName;
+		}
+		
+		System.out.println("\nFile/s added successfully!");
+		return newFiles;
+	}
+	
 
 	public static void main(String[] args) {
 		int option;
 		
 		// Your storage
 		int fileStorage = 1000;
-		int musicStorage = 1000;
-		int videoStorage = 1000;
 		
 		System.out.println("FILE STORAGE PROGRAM");
 		System.out.println("----------------------");
@@ -91,29 +118,20 @@ public class Main {
 		// Values
 		System.out.print("\nEnter how many files to save :");
 		int fileSave = s.nextInt();
-		System.out.print("Enter how many music to save : ");
-		int musicSave = s.nextInt();
-		System.out.print("Enter how many videos to save : ");
-		int videoSave = s.nextInt();
 		
 		// Store the values
 		String[] files = new String[fileSave];
-		String[] musics = new String[musicSave];
-		String[] videos= new String[videoSave];
 		
 		do {
 			
 			// Menu to choose what to do next
 			System.out.println("\nMenu : ");
 			System.out.println("[1] Save the files");
-			System.out.println("[2] Save the musics");
-			System.out.println("[3] Save the videos");
-			System.out.println("[4] View files");
-			System.out.println("[5] View musics");
-			System.out.println("[6] Show videos");
-			System.out.println("[7] Edit file name");
-			System.out.println("[8] Delete a file");
-			System.out.println("[0] Exit");
+			System.out.println("[2] View files");
+			System.out.println("[3] Edit files");
+			System.out.println("[4] Delete files");
+			System.out.println("[5] Add new file/s");
+			System.out.println("[0] Exit the program...");
 			
 			System.out.print("\nEnter your choice : ");
 			option = s.nextInt();
@@ -132,63 +150,23 @@ public class Main {
 					files[i] = nameOfFile;
 					
 				}
-	
-				System.out.println("\nFiles save successfully!");
+				
+				System.out.println("\nFiles sotred successfully!");
 				System.out.println("Remaining storage : " + fileStorage);
-				break;	
+				break;
 			case 2:
-				for (int i = 0; i < musics.length; i++) {
-					s.nextLine();
-					
-					// Name the musics
-					System.out.print("Name the music :");
-					String nameOfMusic = s.nextLine();
-					musicStorage -= 50;
-					
-					// Store the music
-					musics[i] = nameOfMusic;
-				}
-				
-				System.out.println("\nMusics saved successfully!");
-				System.out.println("Remaining storage : " + musicStorage);
-				break;
-			case 3:
-				for (int i = 0; i < videos.length; i++) {
-					s.nextLine();
-					// Name the videos
-					System.out.print("Name of the video : ");
-					String nameOfVideo = s.nextLine();
-					videoStorage -= 50;
-					
-					// Store the videos
-					videos[i] = nameOfVideo;
-				}
-				
-				System.out.println("\nVideos saved successfully!");
-				System.out.println("Remaining storage : " + videoStorage);
-				break;
-				
-			case 4:
 				for (int i = 0; i < files.length; i++) {
 					System.out.println("\nName of file : " + files[i]);
 				}
 				break;
-				
-			case 5:
-				for (int i = 0; i < musics.length; i++) {
-					System.out.println("\nName of music : " + musics[i]);
-				}
-				break;
-			case 6:
-				for (int i = 0; i < videos.length; i++) {
-					System.out.println("\nName of video : " + videos[i]);
-				}
-				break;
-			case 7:
+			case 3:
 				files = updatedFileName(files);
 				break;
-			case 8:
+			case 4:
 				files = deleteFiles(files);
+				break;
+			case 5:
+				files = addedFiles(files);
 				break;
 			case 0:
 				System.out.println("\nProgram terminated!...");
@@ -197,8 +175,7 @@ public class Main {
 				System.out.println("\nInvalid choice!");
 				continue;
 			}
-			
-			
+					
 		} while (option != 0);
 
 	}
