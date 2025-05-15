@@ -12,17 +12,17 @@ import javax.swing.SwingConstants;
 
 public class Main {
 
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Calculator");
-	    frame.setSize(300, 300);           
-	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setLocationRelativeTo(null);
-	    frame.setResizable(false);         
-	    frame.setVisible(true);
+    public static void main(String[] args) {
+	JFrame frame = new JFrame("Calculator");
+	frame.setSize(300, 300);           
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setLocationRelativeTo(null);
+	frame.setResizable(false);         
+	frame.setVisible(true);
 	    
-	    frame.setLayout(new BorderLayout(5, 5));
+	frame.setLayout(new BorderLayout(5, 5));
 	    
-	    JPanel displayPanel = new JPanel();
+	JPanel displayPanel = new JPanel();
         displayPanel.setLayout(new BorderLayout());
         displayPanel.setPreferredSize(new Dimension(300, 50));
         
